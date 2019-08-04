@@ -10,3 +10,7 @@
 ## Install project
 
 - npm install
+
+## Run tests
+
+- npm t
