@@ -6,21 +6,6 @@ describe("predictor", () => {
   });
 
   describe("analyzePlateNumber function", () => {
-    // it("given a time should verify if it is on pico y placa ranges", () => {
-    //   let time1 = "08:30";
-    //   let time2 = "11:00";
-    //   let time3 = "17:24";
-    //   let time4 = "19:31";
-    //   let isTime1OnRanges = predictor.isBetweenTimeRanges(time1);
-    //   let isTime2OnRanges = predictor.isBetweenTimeRanges(time2);
-    //   let isTime3OnRanges = predictor.isBetweenTimeRanges(time3);
-    //   let isTime4OnRanges = predictor.isBetweenTimeRanges(time4);
-    //   expect(isTime1OnRanges).toBe(true);
-    //   expect(isTime2OnRanges).toBe(false);
-    //   expect(isTime3OnRanges).toBe(true);
-    //   expect(isTime4OnRanges).toBe(false);
-    // });
-
     it("given a plate number, date and time, this car should not be able to be on road", () => {
       let dataTrip = {
         plateNumber: "ibc-8491",
@@ -29,7 +14,7 @@ describe("predictor", () => {
       };
       let result = predictor.analyzePlateNumber(dataTrip);
       expect(result).toBe(
-        "The car [ibc-8491] cannot be on the road on 2019-08-26 at 08:30"
+        "The vehicle [ibc-8491] cannot be on the road on 2019-08-26 at 08:30"
       );
     });
 
@@ -41,7 +26,7 @@ describe("predictor", () => {
       };
       let result = predictor.analyzePlateNumber(dataTrip);
       expect(result).toBe(
-        "The car [ibc-8491] cannot be on the road on 2019-08-26 at 17:14"
+        "The vehicle [ibc-8491] cannot be on the road on 2019-08-26 at 17:14"
       );
     });
 
@@ -53,7 +38,7 @@ describe("predictor", () => {
       };
       let result = predictor.analyzePlateNumber(dataTrip);
       expect(result).toBe(
-        "The car [ibc-8491] can be on the road on 2019-08-26 at 13:06"
+        "The vehicle [ibc-8491] can be on the road on 2019-08-26 at 13:06"
       );
     });
 
@@ -65,7 +50,19 @@ describe("predictor", () => {
       };
       let result = predictor.analyzePlateNumber(dataTrip);
       expect(result).toBe(
-        "The car [ibc-8491] can be on the road on 2019-08-28 at 08:51"
+        "The vehicle [ibc-8491] can be on the road on 2019-08-28 at 08:51"
+      );
+    });
+
+    it("given a moto plate number, date and time, this moto should not be able to be on road", () => {
+      let dataTrip = {
+        plateNumber: "hv443j",
+        date: "2019-08-20",
+        time: "17:14"
+      };
+      let result = predictor.analyzePlateNumber(dataTrip);
+      expect(result).toBe(
+        "The vehicle [hv443j] cannot be on the road on 2019-08-20 at 17:14"
       );
     });
   });
